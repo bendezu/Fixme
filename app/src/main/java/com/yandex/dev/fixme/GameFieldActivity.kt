@@ -17,6 +17,11 @@ class GameFieldActivity : AppCompatActivity(), ViewController {
     private val handler = Handler(Looper.getMainLooper())
     private lateinit var controller: Controller
 
+    override fun onStart() {
+        super.onStart()
+        controller.startGame()
+    }
+
     override fun onStop() {
         super.onStop()
         controller.stopGame()
@@ -38,7 +43,6 @@ class GameFieldActivity : AppCompatActivity(), ViewController {
                 item9
         ).map { BaseItem(it) }
         controller = Controller(items, this)
-        controller.startGame()
     }
 
     override fun updateScore(score: Int) {
