@@ -8,7 +8,7 @@ import com.yandex.dev.fixme.R
 /**
  * Created by Elbek D. on 21.07.2018.
  */
-abstract class BaseItem(val view: ImageView) {
+open class BaseItem(val view: ImageView) {
     enum class TYPES {
         BUG, KOSTIL
     }

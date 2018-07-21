@@ -22,29 +22,30 @@ class Controller(val items: List<BaseItem>) {
     private var score = 0
     private var lives = MAX_LIVES
 
-    init {
-//        ItemFactory.createBug()
-    }
 
 
-    private fun List<BaseItem>.getInvisibleItem(): BaseItem {
+    private fun List<BaseItem>.getInvisibleItem(): BaseItem? {
         val list = this.filter { it.view.visibility == View.INVISIBLE }
+        if (list.isEmpty()) return null
         return list.get(random.nextInt(list.size))
     }
     private fun BaseItem.isVisible(): Boolean {
         return this.view.visibility == View.VISIBLE
     }
-    private fun getType() {
+    private fun getType(): BaseItem.TYPES {
         val expect = random.nextInt(BUGS_EXPECT + KOSTIL_EXPECT)
         return when {
-            expect > BUGS_EXPECT -> 1
-            expect < BUGS_EXPECT -> 1
-            else 0
+            expect > BUGS_EXPECT -> BaseItem.TYPES.KOSTIL
+            expect < BUGS_EXPECT -> BaseItem.TYPES.BUG
+            else -> BaseItem.TYPES.BUG
         }
     }
 
     private fun makeStep() {
-        val item = items.getInvisibleItem()
+        val item = items.getInvisibleItem() ?: return
+        val type = getType()
+
+        item.changeImage(type)
         item.appear()
         item.view.setOnClickListener {
             if (item.isVisible()) {
@@ -59,7 +60,6 @@ class Controller(val items: List<BaseItem>) {
                         if (item.isVisible()) {
                             --lives
                             item.destroy()
-                            map.removeItem(item.position)
                         }
                     }
                 },
