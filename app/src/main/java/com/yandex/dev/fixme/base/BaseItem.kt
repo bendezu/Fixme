@@ -1,5 +1,6 @@
 package com.yandex.dev.fixme.base
 
+import android.os.Handler
 import android.util.Log
 import android.view.View
 import android.widget.ImageView
@@ -8,7 +9,10 @@ import com.yandex.dev.fixme.R
 /**
  * Created by Elbek D. on 21.07.2018.
  */
-abstract class BaseItem(val view: ImageView) {
+open class BaseItem(val view: ImageView) {
+    private val handler = Handler(view.context.mainLooper)
+    var type: TYPES = TYPES.BUG
+
     enum class TYPES {
         BUG, KOSTIL
     }
@@ -37,9 +41,12 @@ abstract class BaseItem(val view: ImageView) {
     }
 
     fun changeImage(type: TYPES) {
-        when (type) {
-            TYPES.BUG -> view.setImageResource(R.drawable.ic_launcher_background)
-            TYPES.KOSTIL -> view.setImageResource(R.drawable.ic_launcher_background)
+        this.type = type
+        handler.post {
+            when (type) {
+                TYPES.BUG -> view.setImageResource(R.drawable.ic_launcher_background)
+                TYPES.KOSTIL -> view.setImageResource(R.drawable.ic_launcher_background)
+            }
         }
     }
 }
