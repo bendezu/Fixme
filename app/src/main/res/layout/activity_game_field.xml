@@ -7,7 +7,7 @@
     tools:context=".GameFieldActivity"
     android:background="@drawable/gradient_selector">
 
-    <android.support.v7.widget.Toolbar
+    <FrameLayout
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -17,7 +17,39 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" >
 
-    </android.support.v7.widget.Toolbar>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/bugFixed"
+            android:layout_marginStart="8dp"
+            android:layout_gravity="center_vertical"
+            android:textSize="20sp"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|right">
+            <ImageView
+                android:id="@+id/heard1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:src="@drawable/heart"/>
+            <ImageView
+                android:id="@+id/heard2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:src="@drawable/heart"/>
+            <ImageView
+                android:id="@+id/heard3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:src="@drawable/heart"/>
+        </LinearLayout>
+
+    </FrameLayout>
 
     <TableLayout
         android:layout_width="match_parent"
