@@ -9,6 +9,7 @@ import com.yandex.dev.fixme.base.BaseItem
 class ItemFactory {
     companion object {
         fun createBug(view: ImageView): BaseItem {
+
             return BugItem(view)
         }
 
