@@ -7,14 +7,14 @@ import java.util.*
 class Controller(val items: List<BaseItem>, val viewController: ViewController) {
 
     companion object {
-        const val BUGS_EXPECT = 70
-        const val KOSTIL_EXPECT = 30
+        const val BUGS_EXPECT = 85
+        const val KOSTIL_EXPECT = 15
 
-        const val STEP_TIME = 500L
+        const val STEP_TIME = 300L
         const val MAX_LIVES = 3
     }
-    var STEP_FREEZE = 1_500
-    var LIVE_TIME = 5_000L
+    var STEP_FREEZE = 2_000
+    var LIVE_TIME = 3_000L
 
 
 
@@ -90,8 +90,8 @@ class Controller(val items: List<BaseItem>, val viewController: ViewController) 
     }
 
     private fun makeStep() {
-        if (STEP_FREEZE > 0) --STEP_FREEZE
-        if (LIVE_TIME > 500L) LIVE_TIME -= 10
+        if (STEP_FREEZE > 100) STEP_FREEZE -= 50
+        if (LIVE_TIME > 150L) LIVE_TIME -= 50
 
         Thread.sleep(random.nextInt(STEP_FREEZE).toLong())
 
@@ -131,5 +131,6 @@ class Controller(val items: List<BaseItem>, val viewController: ViewController) 
         timer?.cancel()
         timer?.purge()
         timer = null
+        stepTask = null
     }
 }
