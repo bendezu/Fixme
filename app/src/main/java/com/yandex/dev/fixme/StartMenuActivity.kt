@@ -1,9 +1,9 @@
 package com.yandex.dev.fixme
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
-import android.widget.Toast
 
 class StartMenuActivity : AppCompatActivity() {
 
@@ -13,6 +13,7 @@ class StartMenuActivity : AppCompatActivity() {
     }
 
     fun play(view: View) {
-        Toast.makeText(this, "PLAY", Toast.LENGTH_SHORT).show()
+        intent  = Intent(this, GameFieldActivity::class.java)
+        startActivity(intent)
     }
 }
