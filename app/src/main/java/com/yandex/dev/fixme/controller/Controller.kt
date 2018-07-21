@@ -2,13 +2,16 @@ package com.yandex.dev.fixme.controller
 
 import android.view.View
 import com.yandex.dev.fixme.base.BaseItem
-import com.yandex.dev.fixme.views.ItemFactory
 import java.util.*
+import kotlin.math.exp
 
-class Controller {
+class Controller(val items: List<BaseItem>) {
 
     companion object {
-        const val SIZE = 3
+        const val BUGS_EXPECT = 80
+        const val KOSTIL_EXPECT = 20
+
+
         const val LIVE_TIME = 1_000L
         const val STEP_TIME = 1_000
         const val MAX_LIVES = 5
@@ -19,56 +22,34 @@ class Controller {
     private var score = 0
     private var lives = MAX_LIVES
 
-    private val map: Array<Array<Boolean>> = Array(SIZE, { Array(SIZE, {false}) })
-    private val items: List<BaseItem> = ArrayList()
-    private val factory = ItemFactory()
-
     init {
-        ItemFactory.createBug()
+//        ItemFactory.createBug()
     }
 
 
-    private fun Array<Array<Boolean>>.getEmptyCell(): Pair<Int, Int> {
-        var x: Int
-        var y: Int
-        do {
-            x = random.nextInt(SIZE)
-            y = random.nextInt(SIZE)
-
-        } while (map[x][y])
-
-        return x to y
-    }
-    private fun Array<Array<Boolean>>.setItem(cell: Pair<Int, Int>) {
-        map[cell.first][cell.second] = true
-    }
-    private fun Array<Array<Boolean>>.removeItem(cell: Pair<Int, Int>) {
-        map[cell.first][cell.second] = false
-    }
-    private fun List<BaseItem>.getFreeItem(): BaseItem {
-        var position: Int
-        do {
-            position = Random().nextInt(this.size)
-        } while (items[position].isVisible())
-
-        return items[position]
+    private fun List<BaseItem>.getInvisibleItem(): BaseItem {
+        val list = this.filter { it.view.visibility == View.INVISIBLE }
+        return list.get(random.nextInt(list.size))
     }
     private fun BaseItem.isVisible(): Boolean {
         return this.view.visibility == View.VISIBLE
     }
+    private fun getType() {
+        val expect = random.nextInt(BUGS_EXPECT + KOSTIL_EXPECT)
+        return when {
+            expect > BUGS_EXPECT -> 1
+            expect < BUGS_EXPECT -> 1
+            else 0
+        }
+    }
 
     private fun makeStep() {
-        val position = map.getEmptyCell()
-        val item = items.getFreeItem()
-
-        map.setItem(position)
-        item.position = position
+        val item = items.getInvisibleItem()
         item.appear()
         item.view.setOnClickListener {
             if (item.isVisible()) {
                 ++score
                 item.disappear()
-                map.removeItem(item.position)
             }
         }
 
@@ -86,7 +67,7 @@ class Controller {
         )
     }
 
-    public fun startGame() {
+    fun startGame() {
         timer.schedule(Step(),0L)
     }
 
