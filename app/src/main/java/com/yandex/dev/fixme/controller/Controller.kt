@@ -11,7 +11,7 @@ class Controller(val items: List<BaseItem>) {
         const val KOSTIL_EXPECT = 20
 
 
-        const val LIVE_TIME = 5_000L
+        const val LIVE_TIME = 50_000L
 
         const val STEP_TIME = 5_000L
         const val STEP_FREEZE = 1000
@@ -23,7 +23,6 @@ class Controller(val items: List<BaseItem>) {
 
     private var score = 0
     private var lives = MAX_LIVES
-
 
 
     private fun List<BaseItem>.getInvisibleItem(): BaseItem? {
@@ -49,29 +48,33 @@ class Controller(val items: List<BaseItem>) {
         val item = items.getInvisibleItem() ?: return
         val type = getType()
 
-
         item.changeImage(type)
-        item.appear()
-        item.setOnClickListener(object : View.OnClickListener {
-            override fun onClick(p0: View?) {
+
+        val timerTask: TimerTask
+        val listener: View.OnClickListener
+
+        timerTask = object : TimerTask() {
+            override fun run() {
                 if (item.isVisible()) {
-                    ++score
-                    item.disappear()
+                    --lives
+                    item.destroy()
+                    // TODO null lsitener
+//                    item.setOnClickListener(null)
                 }
             }
-        })
+        }
 
-        timer.schedule(
-                object : TimerTask() {
-                    override fun run() {
-                        if (item.isVisible()) {
-                            --lives
-                            item.destroy()
-                        }
-                    }
-                },
-                LIVE_TIME
-        )
+        listener = View.OnClickListener {
+            if (item.isVisible()) {
+                score += 10
+                timerTask.cancel()
+                item.disappear()
+            }
+        }
+
+        item.setOnClickListener(listener)
+        timer.schedule(timerTask, LIVE_TIME)
+        item.appear()
     }
 
     fun startGame() {
