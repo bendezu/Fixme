@@ -17,6 +17,11 @@ class GameFieldActivity : AppCompatActivity(), ViewController {
     private val handler = Handler(Looper.getMainLooper())
     private lateinit var controller: Controller
 
+    override fun onStop() {
+        super.onStop()
+        controller.stopGame()
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game_field)
