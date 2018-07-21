@@ -1,5 +1,7 @@
 package com.yandex.dev.fixme.base
 
+import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
 import android.os.Handler
 import android.util.Log
 import android.view.View
@@ -22,32 +24,49 @@ open class BaseItem(val view: ImageView) {
         const val TAG = "BaseItem"
     }
 
-    var action: () -> Unit = {}
-
-    lateinit var position: Pair<Int, Int>
-
     open fun appear() {
         handler.post {
+            view.alpha = 0f
+            view.translationY = 0f
+            view.scaleX = 1f
+            view.scaleY = 1f
+            view.animate().setListener(null)
             view.visibility = View.VISIBLE
+            view.animate().translationY(-view.height.toFloat()/4).alpha(1f)
         }
         Log.d(TAG, "item appeared")
     }
 
     open fun disappear() {
         handler.post {
-            view.visibility = View.INVISIBLE
+
+            view.animate().translationY(0f).alpha(0f).
+                    setListener(object: AnimatorListenerAdapter() {
+                override fun onAnimationEnd(animation: Animator?) {
+                    view.visibility = View.INVISIBLE
+
+                }
+            })
         }
         Log.d(TAG, "item disappeared itself")
     }
 
     open fun destroy() {
         handler.post {
-            view.visibility = View.INVISIBLE
+            view.animate().scaleX(2f).scaleY(2f).alpha(0f).
+                    setListener(object: AnimatorListenerAdapter() {
+                        override fun onAnimationEnd(animation: Animator?) {
+                            view.visibility = View.INVISIBLE
+                            view.scaleX = 1f
+                            view.scaleY = 1f
+                            view.translationY = 0f
+                        }
+                    })
         }
         Log.d(TAG, "item tapped by user")
     }
 
-    fun setOnClickListener(listener: View.OnClickListener) {
+    fun setOnClickListener(listener: View.OnClickListener?) {
         handler.post { view.setOnClickListener(listener) }
     }
 
