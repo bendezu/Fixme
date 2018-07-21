@@ -2,6 +2,7 @@ package com.yandex.dev.fixme.controller
 
 import android.view.View
 import com.yandex.dev.fixme.base.BaseItem
+import com.yandex.dev.fixme.views.ItemFactory
 import java.util.*
 
 class Controller {
@@ -20,6 +21,12 @@ class Controller {
 
     private val map: Array<Array<Boolean>> = Array(SIZE, { Array(SIZE, {false}) })
     private val items: List<BaseItem> = ArrayList()
+    private val factory = ItemFactory()
+
+    init {
+        ItemFactory.createBug()
+    }
+
 
     private fun Array<Array<Boolean>>.getEmptyCell(): Pair<Int, Int> {
         var x: Int
@@ -70,7 +77,7 @@ class Controller {
                     override fun run() {
                         if (item.isVisible()) {
                             --lives
-                            item.onDestroyed()
+                            item.destroy()
                             map.removeItem(item.position)
                         }
                     }
@@ -79,11 +86,11 @@ class Controller {
         )
     }
 
-    fun startGame() {
+    public fun startGame() {
         timer.schedule(Step(),0L)
     }
 
-    inner class Step() : TimerTask() {
+    inner class Step : TimerTask() {
 
         override fun run() {
             this@Controller.makeStep()
