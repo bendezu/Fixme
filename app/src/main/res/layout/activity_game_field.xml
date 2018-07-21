@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GameFieldActivity"
-    android:background="@drawable/gradient_selector">
+    android:background="@drawable/gradient_selector"
+    tools:context=".GameFieldActivity">
 
     <FrameLayout
         android:id="@+id/toolbar"
@@ -15,38 +15,43 @@
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" >
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
+            android:id="@+id/bugFixed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/bugFixed"
-            android:layout_marginStart="8dp"
             android:layout_gravity="center_vertical"
-            android:textSize="20sp"/>
+            android:layout_marginStart="8dp"
+            android:text="@string/bugFixed"
+            android:textSize="20sp" />
 
         <LinearLayout
+            android:id="@+id/hearts"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical|right">
+
             <ImageView
                 android:id="@+id/heard1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:src="@drawable/heart"/>
+                android:src="@drawable/heart" />
+
             <ImageView
                 android:id="@+id/heard2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:src="@drawable/heart"/>
+                android:src="@drawable/heart" />
+
             <ImageView
                 android:id="@+id/heard3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:src="@drawable/heart"/>
+                android:src="@drawable/heart" />
         </LinearLayout>
 
     </FrameLayout>
@@ -73,17 +78,19 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_weight="1">
+
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:src="@drawable/hole" />
+
                 <ImageView
                     android:id="@+id/item1"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_gravity="center"
-                    android:visibility="invisible"/>
+                    android:visibility="invisible" />
             </FrameLayout>
 
 
@@ -92,17 +99,19 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_weight="1">
+
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:src="@drawable/hole" />
+
                 <ImageView
                     android:id="@+id/item2"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_gravity="center"
-                    android:visibility="invisible"/>
+                    android:visibility="invisible" />
             </FrameLayout>
 
             <FrameLayout
@@ -110,17 +119,19 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_weight="1">
+
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:src="@drawable/hole" />
+
                 <ImageView
                     android:id="@+id/item3"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_gravity="center"
-                    android:visibility="invisible"/>
+                    android:visibility="invisible" />
             </FrameLayout>
 
         </TableRow>
@@ -135,17 +146,19 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_weight="1">
+
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:src="@drawable/hole" />
+
                 <ImageView
                     android:id="@+id/item4"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_gravity="center"
-                    android:visibility="invisible"/>
+                    android:visibility="invisible" />
             </FrameLayout>
 
             <FrameLayout
@@ -153,17 +166,19 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_weight="1">
+
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:src="@drawable/hole" />
+
                 <ImageView
                     android:id="@+id/item5"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_gravity="center"
-                    android:visibility="invisible"/>
+                    android:visibility="invisible" />
             </FrameLayout>
 
             <FrameLayout
@@ -171,17 +186,19 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_weight="1">
+
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:src="@drawable/hole" />
+
                 <ImageView
                     android:id="@+id/item6"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_gravity="center"
-                    android:visibility="invisible"/>
+                    android:visibility="invisible" />
             </FrameLayout>
 
         </TableRow>
@@ -196,17 +213,19 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_weight="1">
+
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:src="@drawable/hole" />
+
                 <ImageView
                     android:id="@+id/item7"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_gravity="center"
-                    android:visibility="invisible"/>
+                    android:visibility="invisible" />
             </FrameLayout>
 
             <FrameLayout
@@ -214,17 +233,19 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_weight="1">
+
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:src="@drawable/hole" />
+
                 <ImageView
                     android:id="@+id/item8"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_gravity="center"
-                    android:visibility="invisible"/>
+                    android:visibility="invisible" />
             </FrameLayout>
 
             <FrameLayout
@@ -232,17 +253,19 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_weight="1">
+
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:src="@drawable/hole" />
+
                 <ImageView
                     android:id="@+id/item9"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_gravity="center"
-                    android:visibility="invisible"/>
+                    android:visibility="invisible" />
             </FrameLayout>
 
         </TableRow>
