@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GameFieldActivity">
+    tools:context=".GameFieldActivity"
+    android:background="@drawable/gradient_selector">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
@@ -15,11 +16,6 @@
         android:theme="?attr/actionBarTheme"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" >
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/ic_launcher"/>
 
     </android.support.v7.widget.Toolbar>
 
@@ -40,26 +36,57 @@
             android:layout_height="wrap_content"
             android:layout_weight="1">
 
-            <ImageView
+            <FrameLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="1"
-                android:src="@mipmap/ic_launcher" />
+                android:layout_gravity="center"
+                android:layout_weight="1">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/hole" />
+                <ImageView
+                    android:id="@+id/item1"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"/>
+            </FrameLayout>
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="1"
-                android:src="@mipmap/ic_launcher" />
 
-            <ImageView
+            <FrameLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="1"
-                android:src="@mipmap/ic_launcher" />
+                android:layout_gravity="center"
+                android:layout_weight="1">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/hole" />
+                <ImageView
+                    android:id="@+id/item2"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"/>
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/hole" />
+                <ImageView
+                    android:id="@+id/item3"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"/>
+            </FrameLayout>
 
         </TableRow>
 
@@ -68,26 +95,56 @@
             android:layout_height="wrap_content"
             android:layout_weight="1">
 
-            <ImageView
+            <FrameLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="1"
-                android:src="@mipmap/ic_launcher" />
+                android:layout_gravity="center"
+                android:layout_weight="1">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/hole" />
+                <ImageView
+                    android:id="@+id/item4"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"/>
+            </FrameLayout>
 
-            <ImageView
+            <FrameLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="1"
-                android:src="@mipmap/ic_launcher" />
+                android:layout_gravity="center"
+                android:layout_weight="1">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/hole" />
+                <ImageView
+                    android:id="@+id/item5"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"/>
+            </FrameLayout>
 
-            <ImageView
+            <FrameLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="1"
-                android:src="@mipmap/ic_launcher" />
+                android:layout_gravity="center"
+                android:layout_weight="1">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/hole" />
+                <ImageView
+                    android:id="@+id/item6"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"/>
+            </FrameLayout>
 
         </TableRow>
 
@@ -96,26 +153,56 @@
             android:layout_height="wrap_content"
             android:layout_weight="1">
 
-            <ImageView
+            <FrameLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="1"
-                android:src="@mipmap/ic_launcher" />
+                android:layout_gravity="center"
+                android:layout_weight="1">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/hole" />
+                <ImageView
+                    android:id="@+id/item7"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"/>
+            </FrameLayout>
 
-            <ImageView
+            <FrameLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="1"
-                android:src="@mipmap/ic_launcher" />
+                android:layout_gravity="center"
+                android:layout_weight="1">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/hole" />
+                <ImageView
+                    android:id="@+id/item8"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"/>
+            </FrameLayout>
 
-            <ImageView
+            <FrameLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="1"
-                android:src="@mipmap/ic_launcher" />
+                android:layout_gravity="center"
+                android:layout_weight="1">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/hole" />
+                <ImageView
+                    android:id="@+id/item9"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"/>
+            </FrameLayout>
 
         </TableRow>
     </TableLayout>
