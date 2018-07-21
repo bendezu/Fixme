@@ -50,7 +50,8 @@
                     android:id="@+id/item1"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:layout_gravity="center"/>
+                    android:layout_gravity="center"
+                    android:visibility="invisible"/>
             </FrameLayout>
 
 
@@ -68,7 +69,8 @@
                     android:id="@+id/item2"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:layout_gravity="center"/>
+                    android:layout_gravity="center"
+                    android:visibility="invisible"/>
             </FrameLayout>
 
             <FrameLayout
@@ -85,7 +87,8 @@
                     android:id="@+id/item3"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:layout_gravity="center"/>
+                    android:layout_gravity="center"
+                    android:visibility="invisible"/>
             </FrameLayout>
 
         </TableRow>
@@ -109,7 +112,8 @@
                     android:id="@+id/item4"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:layout_gravity="center"/>
+                    android:layout_gravity="center"
+                    android:visibility="invisible"/>
             </FrameLayout>
 
             <FrameLayout
@@ -126,7 +130,8 @@
                     android:id="@+id/item5"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:layout_gravity="center"/>
+                    android:layout_gravity="center"
+                    android:visibility="invisible"/>
             </FrameLayout>
 
             <FrameLayout
@@ -143,7 +148,8 @@
                     android:id="@+id/item6"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:layout_gravity="center"/>
+                    android:layout_gravity="center"
+                    android:visibility="invisible"/>
             </FrameLayout>
 
         </TableRow>
@@ -167,7 +173,8 @@
                     android:id="@+id/item7"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:layout_gravity="center"/>
+                    android:layout_gravity="center"
+                    android:visibility="invisible"/>
             </FrameLayout>
 
             <FrameLayout
@@ -184,7 +191,8 @@
                     android:id="@+id/item8"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:layout_gravity="center"/>
+                    android:layout_gravity="center"
+                    android:visibility="invisible"/>
             </FrameLayout>
 
             <FrameLayout
@@ -201,7 +209,8 @@
                     android:id="@+id/item9"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:layout_gravity="center"/>
+                    android:layout_gravity="center"
+                    android:visibility="invisible"/>
             </FrameLayout>
 
         </TableRow>
