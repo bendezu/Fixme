@@ -10,6 +10,7 @@ import com.yandex.dev.fixme.controller.Controller
 import com.yandex.dev.fixme.controller.ViewController
 import kotlinx.android.synthetic.main.activity_game_field.*
 
+
 class GameFieldActivity : AppCompatActivity(), ViewController {
     private lateinit var controller: Controller
 
@@ -28,7 +29,7 @@ class GameFieldActivity : AppCompatActivity(), ViewController {
                 item8,
                 item9
         ).map { BaseItem(it) }
-        controller = Controller(items)
+        controller = Controller(items, this)
         controller.startGame()
     }
 

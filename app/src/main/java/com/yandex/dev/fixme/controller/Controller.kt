@@ -4,7 +4,7 @@ import android.view.View
 import com.yandex.dev.fixme.base.BaseItem
 import java.util.*
 
-class Controller(val items: List<BaseItem>) {
+class Controller(val items: List<BaseItem>, val viewController: ViewController) {
 
     companion object {
         const val BUGS_EXPECT = 80
@@ -16,7 +16,7 @@ class Controller(val items: List<BaseItem>) {
         const val STEP_TIME = 5_000L
         const val STEP_FREEZE = 1000
 
-        const val MAX_LIVES = 5
+        const val MAX_LIVES = 3
     }
     private val random = Random()
     private val timer = Timer()
@@ -42,6 +42,55 @@ class Controller(val items: List<BaseItem>) {
         }
     }
 
+    private fun getTask(type: BaseItem.TYPES, item: BaseItem): TimerTask {
+        return when(type) {
+            BaseItem.TYPES.BUG -> object : TimerTask() {
+                override fun run() {
+                    if (item.isVisible()) {
+                        viewController.updateLife(--lives)
+                        if (lives == 0) {
+                            viewController.exit()
+                        }
+                        item.disappear()
+                        // TODO null lsitener
+//                    item.setOnClickListener(null)
+                    }
+                }
+            }
+            BaseItem.TYPES.KOSTIL -> object : TimerTask() {
+                override fun run() {
+                    if (item.isVisible()) {
+                        item.disappear()
+                        // TODO null lsitener
+//                    item.setOnClickListener(null)
+                    }
+                }
+            }
+        }
+    }
+    private fun getListener(type: BaseItem.TYPES, item: BaseItem, timerTask: TimerTask): View.OnClickListener {
+        return when(type) {
+            BaseItem.TYPES.BUG -> View.OnClickListener {
+                if (item.isVisible()) {
+                    viewController.updateLife(--lives)
+                    if (lives == 0) {
+                        viewController.exit()
+                    }
+                    timerTask.cancel()
+                    item.destroy()
+                }
+            }
+            BaseItem.TYPES.KOSTIL -> View.OnClickListener {
+                if (item.isVisible()) {
+                    score += 10
+                    viewController.updateScore(score)
+                    timerTask.cancel()
+                    item.destroy()
+                }
+            }
+        }
+    }
+
     private fun makeStep() {
         Thread.sleep(random.nextInt(STEP_FREEZE).toLong())
 
@@ -53,29 +102,15 @@ class Controller(val items: List<BaseItem>) {
         val timerTask: TimerTask
         val listener: View.OnClickListener
 
-        timerTask = object : TimerTask() {
-            override fun run() {
-                if (item.isVisible()) {
-                    --lives
-                    item.destroy()
-                    // TODO null lsitener
-//                    item.setOnClickListener(null)
-                }
-            }
-        }
-
-        listener = View.OnClickListener {
-            if (item.isVisible()) {
-                score += 10
-                timerTask.cancel()
-                item.disappear()
-            }
-        }
+        timerTask = getTask(type, item)
+        listener = getListener(type, item, timerTask)
 
         item.setOnClickListener(listener)
         timer.schedule(timerTask, LIVE_TIME)
         item.appear()
     }
+
+
 
     fun startGame() {
         timer.schedule(object : TimerTask() {
