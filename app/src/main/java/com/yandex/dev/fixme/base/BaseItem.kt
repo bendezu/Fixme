@@ -35,22 +35,28 @@ open class BaseItem(val view: ImageView) {
 
     open fun disappear() {
         handler.post {
-            view.visibility = View.GONE
+            view.visibility = View.INVISIBLE
         }
         Log.d(TAG, "item disappeared itself")
     }
 
     open fun destroy() {
-        view.visibility = View.GONE
+        handler.post {
+            view.visibility = View.INVISIBLE
+        }
         Log.d(TAG, "item tapped by user")
+    }
+
+    fun setOnClickListener(listener: View.OnClickListener) {
+        handler.post { view.setOnClickListener(listener) }
     }
 
     fun changeImage(type: TYPES) {
         this.type = type
         handler.post {
             when (type) {
-                TYPES.BUG -> view.setImageResource(R.drawable.ic_launcher_background)
-                TYPES.KOSTIL -> view.setImageResource(R.drawable.ic_launcher_background)
+                TYPES.BUG -> view.background = view.context.getDrawable(R.drawable.greenbug)
+                TYPES.KOSTIL -> view.background = view.context.getDrawable(R.drawable.redbug)
             }
         }
     }

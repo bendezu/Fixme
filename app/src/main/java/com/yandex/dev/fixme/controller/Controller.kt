@@ -3,7 +3,6 @@ package com.yandex.dev.fixme.controller
 import android.view.View
 import com.yandex.dev.fixme.base.BaseItem
 import java.util.*
-import kotlin.math.exp
 
 class Controller(val items: List<BaseItem>) {
 
@@ -12,8 +11,11 @@ class Controller(val items: List<BaseItem>) {
         const val KOSTIL_EXPECT = 20
 
 
-        const val LIVE_TIME = 1_000L
-        const val STEP_TIME = 1_000
+        const val LIVE_TIME = 5_000L
+
+        const val STEP_TIME = 5_000L
+        const val STEP_FREEZE = 1000
+
         const val MAX_LIVES = 5
     }
     private val random = Random()
@@ -42,17 +44,22 @@ class Controller(val items: List<BaseItem>) {
     }
 
     private fun makeStep() {
+        Thread.sleep(random.nextInt(STEP_FREEZE).toLong())
+
         val item = items.getInvisibleItem() ?: return
         val type = getType()
 
+
         item.changeImage(type)
         item.appear()
-        item.view.setOnClickListener {
-            if (item.isVisible()) {
-                ++score
-                item.disappear()
+        item.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(p0: View?) {
+                if (item.isVisible()) {
+                    ++score
+                    item.disappear()
+                }
             }
-        }
+        })
 
         timer.schedule(
                 object : TimerTask() {
@@ -68,18 +75,10 @@ class Controller(val items: List<BaseItem>) {
     }
 
     fun startGame() {
-        timer.schedule(Step(),0L)
+        timer.schedule(object : TimerTask() {
+            override fun run() {
+                makeStep()
+            }
+        },0L, STEP_TIME)
     }
-
-    inner class Step : TimerTask() {
-
-        override fun run() {
-            this@Controller.makeStep()
-            this@Controller.timer.schedule(
-                    this@Step,
-                    this@Controller.random.nextInt(STEP_TIME).toLong()
-            )
-        }
-    }
-
 }
