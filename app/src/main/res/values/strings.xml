@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">FIXME</string>
-    <string name="bugFixed">Bug Fixed: %1$d</string>
+    <string name="bugFixed">Bugs Fixed: %1$d</string>
 </resources>
