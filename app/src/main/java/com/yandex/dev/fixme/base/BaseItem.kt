@@ -26,12 +26,16 @@ open class BaseItem(val view: ImageView) {
     lateinit var position: Pair<Int, Int>
 
     open fun appear() {
-        view.visibility = View.VISIBLE
+        handler.post {
+            view.visibility = View.VISIBLE
+        }
         Log.d(TAG, "item appeared")
     }
 
     open fun disappear() {
-        view.visibility = View.GONE
+        handler.post {
+            view.visibility = View.GONE
+        }
         Log.d(TAG, "item disappeared itself")
     }
 
