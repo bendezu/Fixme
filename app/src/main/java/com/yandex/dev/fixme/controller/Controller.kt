@@ -19,7 +19,7 @@ class Controller(val items: List<BaseItem>, val viewController: ViewController) 
 
 
     private val random = Random()
-    private val timer = Timer()
+    private var timer: Timer? = Timer()
 
     private var score = 0
     private var lives = MAX_LIVES
@@ -49,7 +49,7 @@ class Controller(val items: List<BaseItem>, val viewController: ViewController) 
                     if (item.isVisible()) {
                         viewController.updateLife(--lives)
                         if (lives == 0) {
-                            viewController.exit()
+                            viewController.exit(score)
                         }
                         item.disappear()
                         item.setOnClickListener(null)
@@ -72,7 +72,7 @@ class Controller(val items: List<BaseItem>, val viewController: ViewController) 
                 if (item.isVisible()) {
                     viewController.updateLife(--lives)
                     if (lives == 0) {
-                        viewController.exit()
+                        viewController.exit(score)
                     }
                     timerTask.cancel()
                     item.destroy()
@@ -107,19 +107,29 @@ class Controller(val items: List<BaseItem>, val viewController: ViewController) 
         listener = getListener(type, item, timerTask)
 
         item.setOnClickListener(listener)
-        timer.schedule(timerTask, LIVE_TIME)
+        timer?.schedule(timerTask, LIVE_TIME)
         item.appear()
     }
 
+    var stepTask: TimerTask? = null
+
     fun startGame() {
-        timer.schedule(object : TimerTask() {
+        stepTask = object : TimerTask() {
             override fun run() {
                 makeStep()
             }
-        },0L, STEP_TIME)
+        }
+        timer?.schedule(stepTask, 0L, STEP_TIME)
+    }
+
+    fun pauseGame() {
+        stepTask?.cancel()
     }
 
     fun stopGame() {
-        timer.cancel()
+        stepTask?.cancel()
+        timer?.cancel()
+        timer?.purge()
+        timer = null
     }
 }

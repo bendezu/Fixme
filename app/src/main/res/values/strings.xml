@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">FIXME</string>
-    <string name="bugFixed">Bugs Fixed: %1$d</string>
+    <string name="bugFixed">Bug Fixed: 0</string>
+    <string name="finalScore">Your final score is</string>
 </resources>

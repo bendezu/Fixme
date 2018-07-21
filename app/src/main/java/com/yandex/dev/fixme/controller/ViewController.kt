@@ -6,5 +6,5 @@ package com.yandex.dev.fixme.controller
 interface ViewController {
     fun updateScore(score: Int)
     fun updateLife(life: Int)
-    fun exit()
+    fun exit(currentScore: Int)
 }
